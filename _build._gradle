@@ -31,7 +31,7 @@ dependencies {
         // Turn off JUnit v4 and add v5 below
         exclude module: 'junit'
 
-        // Turn off mockito becase of Kotlin friendly Spring Mockk
+        // Turn off mockito because of Kotlin friendly Spring Mockk
         exclude module: 'mockito-core'
     }
     testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
