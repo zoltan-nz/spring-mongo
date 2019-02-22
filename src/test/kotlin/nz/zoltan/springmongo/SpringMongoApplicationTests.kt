@@ -9,5 +9,4 @@ class SpringMongoApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

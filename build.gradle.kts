@@ -4,6 +4,9 @@ plugins {
     val kotlinVersion = "1.3.30"
     val springBootVersion = "2.1.4.RELEASE"
 
+    application
+    idea
+
     id("org.springframework.boot") version springBootVersion
 
     kotlin("jvm") version kotlinVersion
@@ -15,17 +18,24 @@ plugins {
 group = "nz.zoltan"
 version = "0.0.1-SNAPSHOT"
 
+application {
+    mainClassName = "nz.zoltan.springmongo.SpringMongoApplication"
+}
+
 repositories {
     mavenCentral()
     jcenter()
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
 
     // Add handy developer tools support like livereload and auto rebuild
     runtimeOnly("org.springframework.boot:spring-boot-devtools")
@@ -51,6 +61,8 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
+
+
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "1.8"
